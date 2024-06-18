@@ -19,7 +19,7 @@ def main():
         text = ' '.join(df.stack().astype(str))
 
         # Set your OpenAI API key
-        client = OpenAI(api_key="sk-proj-cHW7IgnrWULPIhoM7517T3BlbkFJZtZloJTM3ECYqyMEfFUy")
+        client = OpenAI(api_key="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")
 
         # Define your messages
         messages = [
@@ -30,7 +30,7 @@ def main():
         # Call the OpenAI API to get the completion
         try:
             response = client.chat.completions.create(
-                model="gpt-3.5-turbo",
+                model="gpt-4o",
                 messages=messages,
                 max_tokens=100
             )
