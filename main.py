@@ -1,6 +1,11 @@
+from dotenv import load_dotenv
 import streamlit as st
 import pandas as pd
+import os
 from openai import OpenAI
+from dotenv import load_dotenv
+
+load_dotenv()
 
 def main():
     st.set_page_config(page_title="ASK YOUR Sheet")
@@ -19,11 +24,12 @@ def main():
         text = ' '.join(df.stack().astype(str))
 
         # Set your OpenAI API key
-        client = OpenAI(api_key="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")
+        api_key = os.getenv("OPENAI_API_KEY")
+        client = OpenAI(api_key=api_key)
 
         # Define your messages
         messages = [
-            {"role": "system", "content": "You are a helpful assistant and very very knowledgeable about CEFR levels. and only give a two word answer for each word, which is the word it self and it's CEFR level for all the words entered and do this very very carefully so that there are no Mistakes  do the same and give the answer in the form abondon C1 Ability B1 etc"},
+            {"role": "system", "content": "You are a helpful assistant and very very knowledgeable about CEFR levels. and only give a two word answer for each word, which is the word it self and it's CEFR level for all the words entered and do this very very carefully so that there are no Mistakes do the same and give the answer in the form abondon C1 Ability B1 etc"},
             {"role": "user", "content": text}
         ]
 
