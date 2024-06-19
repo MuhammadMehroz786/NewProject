@@ -34,7 +34,7 @@ def main():
 
         # Define your messages
         messages = [
-            {"role": "system", "content": "You are a helpful assistant and very very knowledgeable about CEFR levels. and only give a one word answer for each word, which is the CEFR level for each of the words entered and do this very very carefully so that there are no Mistakes do the same and give the answer in the form A1 C1 B1 A2 etc"},
+            {"role": "system", "content": "You are a helpful assistant and very very knowledgeable about CEFR levels. and only give a two word answer for each word, which is the word it self and the CEFR level for each of the words entered and do this very very carefully so that there are no Mistakes do the same and give the answer in the form Abandon B2 Ability B1 Able A2 Abortion B2 About A1 etc"},
             {"role": "user", "content": text}
         ]
 
