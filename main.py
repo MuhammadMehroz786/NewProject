@@ -43,7 +43,7 @@ def main():
             response = openai.ChatCompletion.create(
                 model="gpt-3.5-turbo",
                 messages=messages,
-                max_tokens=100
+                max_tokens=1000
             )
         except Exception as e:
             st.write(f"Error communicating with OpenAI API: {e}")
