@@ -5,10 +5,11 @@ import os
 from openai import OpenAI
 from dotenv import load_dotenv
 
-load_dotenv()
+st.set_page_config(page_title="ASK YOUR Sheet")
 
 def main():
-    st.set_page_config(page_title="ASK YOUR Sheet")
+    api_key = st.text_input("Enter your OpenAI API Key")
+    
     st.header("Ask your Sheet")
 
     Sheet = st.file_uploader("Upload your Excel Sheet", type="xlsx")
@@ -23,9 +24,10 @@ def main():
         # Convert the data into a single string
         text = ' '.join(df.stack().astype(str))
 
-        # Set your OpenAI API key
-        api_key = os.getenv("OPENAI_API_KEY")
-        client = OpenAI(api_key=api_key)
+        if api_key:
+            client = OpenAI(api_key=api_key)
+        else:
+            st.write("Please enter your OpenAI API Key.")
 
         # Define your messages
         messages = [
