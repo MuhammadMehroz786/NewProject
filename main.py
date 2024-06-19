@@ -1,10 +1,9 @@
 import streamlit as st
 import pandas as pd
 import openai
-from openai import ChatCompletion
 from dotenv import load_dotenv
-from openai import Client, ChatCompletion
 import os
+
 # Load environment variables from .env file if it exists
 load_dotenv()
 
@@ -29,7 +28,6 @@ def main():
 
         if api_key:
             openai.api_key = api_key
-            client = openai.Client(api_key=api_key)  # Initialize the OpenAI API client
         else:
             st.write("Please enter your OpenAI API Key.")
             return
@@ -42,7 +40,7 @@ def main():
 
         # Call the OpenAI API to get the completion
         try:
-            response = client.chat.completions.create(
+            response = openai.ChatCompletion.create(
                 model="gpt-3.5-turbo",
                 messages=messages,
                 max_tokens=100
@@ -52,8 +50,7 @@ def main():
             return
 
         # Get the answer from the API response
-        # Get the answer from the API response
-        answer = response.choices[0].message.content
+        answer = response.choices[0]['message']['content']
 
         # Break line after every two words
         words = answer.split()
