@@ -3,7 +3,7 @@ import pandas as pd
 import openai
 from openai import ChatCompletion
 from dotenv import load_dotenv
-from openai import Client
+from openai import Client, ChatCompletion
 import os
 # Load environment variables from .env file if it exists
 load_dotenv()
